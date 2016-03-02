@@ -20,14 +20,18 @@ import Data.Maybe
 
 
 type AddressBook = [Entry]
+
 data Entry       = E { firstN :: String, lastN :: String, address :: Address } 
-data Address     = A { street :: String, city  :: String, state   :: String }
+                        deriving (Show,Eq)
 
-
-instance Show Address where
-	show (A s c st) = s ++ " "  ++ c  ++ " " ++ st
-
+data Address     = A { street :: String, city  :: String, state   :: String } 
+                        deriving (Show,Eq)
 
 
 
 
+a1 :: Address
+a1 = A "copley" "solon" "OH"
+
+e1 :: Entry
+e1 = E "xiao" "ling" a1

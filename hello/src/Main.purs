@@ -17,7 +17,7 @@ circ :: Number -> Number
 circ r = pi * (pow r 2.0)
 
 main :: forall e. Eff (console :: CONSOLE | e) Unit
-main = print (circ 1.3)
+main = print $ "hello world " ++ show (circ 3.4)
 
 
 
