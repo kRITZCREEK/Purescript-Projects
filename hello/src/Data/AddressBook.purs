@@ -15,7 +15,6 @@ import Prelude
 import Data.List 
 import Data.Maybe
 import Data.Functor
-
 import Control.Plus
 
 
@@ -36,7 +35,7 @@ derive instance eqEntry    :: Eq Entry
 ---------------------------------------------------------------------------------------------------
 
 instance showAddress :: Show Address where
-	show (A a) = "Address: " ++ a.street ++ " " ++ a.city ++ " " ++ a.state
+    show (A a) = "Address: " ++ a.street ++ " " ++ a.city ++ " " ++ a.state
 
 instance showEntry :: Show Entry where
     show (E e) = "Name: " ++ e.firstN ++ " " ++ e.lastN ++ " " ++ show e.address
@@ -53,8 +52,8 @@ insertE xs e = e : xs
 
 findE :: AddressBook -> String -> String -> Maybe Entry
 findE es n1 n2 = case es of
-	Nil            -> Nothing
-	Cons (E e) es' -> if e.firstN == n1 && e.lastN == n2 then Just (E e) else findE es' n1 n2
+    Nil            -> Nothing
+    Cons (E e) es' -> if e.firstN == n1 && e.lastN == n2 then Just (E e) else findE es' n1 n2
 
 deleteE :: AddressBook -> Entry -> AddressBook
 deleteE Nil         _      = Nil
@@ -62,7 +61,7 @@ deleteE (Cons x xs) e      = if x == e then xs else Cons x (deleteE xs e)
 
 updateA :: AddressBook -> String -> String -> Address -> AddressBook
 updateA es n1 n2 a = (go n1 n2 a) <$> es
-  where go n1 n2 a e@(E e) = if e.firstN = n1 && e.lastN == n2 then e `liveAt` a else e
+    where go n1 n2 a (E e) = if e.firstN == n1 && e.lastN == n2 then (E e) `liveAt` a else (E e)
 
 ---------------------------------------------------------------------------------------------------
 -- * Examples
@@ -85,7 +84,7 @@ es = Cons e1 (Cons e2 Nil)
 
 ---------------------------------------------------------------------------------------------------
 -- * Utility function Properties
--- * TODO: quickcheck these. also restate them since the functions have changed
+-- * TODO quickcheck these. also restate them since the functions have changed
 ---------------------------------------------------------------------------------------------------
 
 -- * insert
