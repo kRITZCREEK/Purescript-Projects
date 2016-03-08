@@ -52,7 +52,7 @@ defaultMain spec initialState = void do
   ReactDOM.render (R.createFactory component {}) container
 
 ---------------------------------------------------------------------------------------------------
--- * Hello world here: http://paf31.github.io/try-thermite/ 
+-- * Hello world here: http://paf31.github.io/try-thermite/
 ---------------------------------------------------------------------------------------------------
 
 -- * a thermite component is some state
